@@ -1,8 +1,7 @@
 package com.example.kata.service
 
 import com.example.kata.dao.AccountDaoMock
-import com.example.kata.models.DepositData
-import com.example.kata.models.WithdrawData
+import com.example.kata.models.*
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 import kotlin.test.assertEquals
@@ -19,7 +18,7 @@ class ServiceTest {
             makeWithdraw(WithdrawData("john", 50.0))
             makeWithdraw(WithdrawData("john", 25.0))
 
-            assertEquals(75.0, getAccountHistory("john").lastOrNull()?.balance)
+            assertEquals(75.0, getAccountHistory("john").maxByOrNull { it.date }?.balance)
         }
     }
 

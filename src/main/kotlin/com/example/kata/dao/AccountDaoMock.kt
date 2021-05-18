@@ -6,29 +6,19 @@ import com.example.kata.models.WithdrawTransaction
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.filter
-import java.util.*
 
 class AccountDaoMock : AccountDao {
     private val transactionList = mutableListOf<Transaction>()
 
-    // To put in unit test of the service
-//    val balance: Double
-//        get() = transactionList.fold(0.0) { b: Double, transaction: Transaction ->
-//            when(transaction) {
-//                is DepositTransaction -> b + transaction.amount
-//                is WithdrawTransaction -> b - transaction.amount
-//            }
-//        }
-
     override suspend fun makeDeposit(id: String, amount: Double): Boolean {
         val newBalance = balanceForUser(id) + amount
-        transactionList += DepositTransaction(id, Date(), newBalance, amount)
+        transactionList += DepositTransaction(id, System.nanoTime(), newBalance, amount)
         return true
     }
 
     override suspend fun makeWithdraw(id: String, amount: Double): Boolean {
         val newBalance = balanceForUser(id) - amount
-        transactionList += WithdrawTransaction(id, Date(), newBalance, amount)
+        transactionList += WithdrawTransaction(id, System.nanoTime(), newBalance, amount)
         return true
     }
 
