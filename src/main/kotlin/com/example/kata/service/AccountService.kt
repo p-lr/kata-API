@@ -6,6 +6,9 @@ import com.example.kata.models.Transaction
 import com.example.kata.models.WithdrawData
 import kotlinx.coroutines.flow.toList
 
+/**
+ * This service enables account deposit, withdrawal, and history checking.
+ */
 class AccountService(
     private val accountDao: AccountDao,
 ) {
