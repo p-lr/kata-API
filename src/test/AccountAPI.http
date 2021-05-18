@@ -1,0 +1,19 @@
+POST http://127.0.0.1:8080/account/deposit
+Content-Type: application/json
+
+{
+  "id": "john",
+  "amount": 150.0
+}
+
+###
+POST http://127.0.0.1:8080/account/withdraw
+Content-Type: application/json
+
+{
+"id": "john",
+"amount": 100.0
+}
+
+###
+GET http://127.0.0.1:8080/account/history/john
