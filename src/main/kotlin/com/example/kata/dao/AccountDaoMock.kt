@@ -7,6 +7,10 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.filter
 
+/**
+ * For the sake of simplicity, the mock source is part of this module. In a real app, it would be imported e.g as
+ * an OSGI plugin.
+ */
 class AccountDaoMock : AccountDao {
     private val transactionList = mutableListOf<Transaction>()
 
